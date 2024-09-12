@@ -11,3 +11,7 @@ async def get_tasks():
 @router.post("/tasks", response_model=int)
 async def create_task(task: TaskCreate):
     return await task_service.create_task(task)
+
+@router.put("/tasks/{task_id}")
+async def update_task(task_id: int, completed: bool):
+    task = await task_service.update_task(task_id, completed)
