@@ -7,3 +7,8 @@ async def create_task(task: TaskCreate):
     task_id = await database.execute(query)
     return task_id
 
+async def get_all_tasks():
+    query = tasks.select()
+    return await database.fetch_all(query)
+
+
