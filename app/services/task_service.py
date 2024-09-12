@@ -11,4 +11,6 @@ async def get_all_tasks():
     query = tasks.select()
     return await database.fetch_all(query)
 
-
+async def update_task(task_id: int, completed: bool):
+    query = tasks.update().where(tasks.c.id == task_id).values(completed=completed)
+    return await database.execute(query)
